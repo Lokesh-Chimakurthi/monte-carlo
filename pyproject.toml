@@ -1,0 +1,72 @@
+[project]
+name = "monte-carlo-oracle"
+version = "0.1.0"
+description = "AI-powered decision engine using Monte Carlo simulations across multiple models"
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+authors = [
+    { name = "Lokesh Chimakurthi" }
+]
+keywords = ["monte-carlo", "simulation", "ai", "mcp", "multi-model"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    # AI Models
+    "anthropic>=0.75.0",
+    "claude-agent-sdk>=0.1.10",
+    "google-genai>=1.52.0",
+    "openai>=2.8.1",
+    # MCP & Tools
+    "mcp>=1.22.0",
+    "pydantic-ai-slim>=1.25.1",
+    "tavily-python>=0.5.0",
+    # Sandbox & Execution
+    "modal>=1.2.4",
+    # UI & Visualization
+    "gradio>=6.0.1",
+    "plotly>=6.5.0",
+    # Data & Finance
+    "yfinance>=0.2.66",
+    "numpy>=2.0.0",
+    "pandas>=2.0.0",
+    # HTTP & Utils
+    "httpx>=0.28.1",
+    "python-dotenv>=1.0.0",
+    "notebook>=7.5.0",
+    "deepagents>=0.2.8",
+    "langchain-openai>=1.1.0",
+    "pandas-stubs==2.3.2.250926",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.8.0",
+]
+
+[project.scripts]
+monte-carlo = "src.cli:main"
+
+#[build-system]
+#requires = ["hatchling"]
+#build-backend = "hatchling.build"
+#
+#[tool.hatch.build.targets.wheel]
+#packages = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["F", "I", "W"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
